@@ -203,7 +203,7 @@ namespace Leblanc
             if (IgniteSlot != SpellSlot.Unknown && Player.SummonerSpellbook.CanUseSpell(IgniteSlot) == SpellState.Ready)
                 damage += DamageLib.getDmg(enemy, DamageLib.SpellType.IGNITE);
 
-            if (E.IsReady())
+            if (R.IsReady())
                 damage += DamageLib.getDmg(enemy, DamageLib.SpellType.R);
 
             return (float)damage * (DFG.IsReady() ? 1.2f : 1);
@@ -213,8 +213,8 @@ namespace Leblanc
         {
             var qTarget = SimpleTs.GetTarget(Q.Range + (isHarass ? Q.Width / 3 : Q.Width), SimpleTs.DamageType.Magical);
             var wTarget = SimpleTs.GetTarget(W.Range + W.Width, SimpleTs.DamageType.Magical);
-            var rTarget = SimpleTs.GetTarget(R.Range, SimpleTs.DamageType.Magical);
-            var eTarget = SimpleTs.GetTarget(E.Range, SimpleTs.DamageType.Magical);
+            var rTarget = SimpleTs.GetTarget(E.Range, SimpleTs.DamageType.Magical);
+            var eTarget = SimpleTs.GetTarget(R.Range, SimpleTs.DamageType.Magical);
             var comboDamage = wTarget != null ? GetComboDamage(wTarget) : 0;
 
             //Q
