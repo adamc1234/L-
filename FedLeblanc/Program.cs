@@ -1,4 +1,4 @@
-﻿#region
+#region
 
 using System;
 using System.Collections.Generic;
@@ -256,9 +256,23 @@ namespace Leblanc
 
         private static void Combo()
         {
-                UseSpells(Config.Item("UseQCombo").GetValue<bool>(), Config.Item("UseWCombo").GetValue<bool>(),
-                Config.Item("UseRCombo").GetValue<bool>(), Config.Item("UseECombo").GetValue<bool>(),
-                Config.Item("UseIgniteCombo").GetValue<bool>(), false);
+                if (target != null && Config.Item("UseQCombo").GetValue<bool>())
+                {
+                    Q.CastOnUnit(target);
+                }
+                if (target != null && (Config.Item("UseRCombo").GetValue<bool>())
+                {
+                    R.CastOnUnit(target);
+                }
+                if (target != null && (Config.Item("UseWCombo").GetValue<bool>())
+                {
+                    W.CastOnUnit(target);
+                }
+                if (target != null && Config.Item("UseECombo").GetValue<bool>())
+                {
+                    PredictionOutput ePred = E.GetPrediction(target);
+                    if (ePred.Hitchance >= HitChance.High)
+                        E.Cast(ePred.CastPosition);
         }
 
         private static void ToggleHarass()
